@@ -74,7 +74,7 @@ function displayResults(recommendation) {
     // Calculate margins
     let marginPercent = 0;
     let markupPercent = 0;
-    if (unitCost > 0) {
+    if (unitCost > 0 && targetPrice > 0) {
         marginPercent = ((targetPrice - unitCost) / targetPrice) * 100;
         markupPercent = ((targetPrice - unitCost) / unitCost) * 100;
     }
@@ -165,6 +165,9 @@ function displayResults(recommendation) {
 
 // Helper functions
 function formatNumber(num) {
+    if (num === null || num === undefined || isNaN(num)) {
+        return '0.00';
+    }
     return Number(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 

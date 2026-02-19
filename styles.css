@@ -686,12 +686,15 @@ footer p {
 
 .result-insights ul li::before,
 .result-tips ul li::before {
-    content: "✓";
     position: absolute;
     left: 0;
-    color: var(--accent-color);
     font-weight: bold;
     font-size: 1.25rem;
+}
+
+.result-insights ul li::before {
+    content: "✓";
+    color: var(--accent-color);
 }
 
 .result-tips ul li::before {
