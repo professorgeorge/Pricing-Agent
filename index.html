@@ -16,7 +16,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#strategies">Strategies</a></li>
-                <li><a href="#getting-started">Get Started</a></li>
+                <li><a href="#calculator">Calculator</a></li>
                 <li><a href="https://github.com/professorgeorge/pricingagent" target="_blank" class="btn-github">GitHub</a></li>
             </ul>
         </nav>
@@ -28,7 +28,7 @@
                 <h1 class="hero-title">Intelligent Pricing Recommendation System</h1>
                 <p class="hero-subtitle">Determine optimal prices for your goods or services based on industry best practices, market positioning, and competitive analysis</p>
                 <div class="hero-buttons">
-                    <a href="#getting-started" class="btn btn-primary">Get Started</a>
+                    <a href="#calculator" class="btn btn-primary">Try It Now</a>
                     <a href="https://github.com/professorgeorge/pricingagent" target="_blank" class="btn btn-secondary">View on GitHub</a>
                 </div>
             </div>
@@ -135,30 +135,122 @@
             </div>
         </section>
 
-        <section id="getting-started" class="getting-started">
+        <section id="calculator" class="calculator-section">
             <div class="container">
-                <h2 class="section-title">Getting Started</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Clone the Repository</h3>
-                        <pre><code>git clone https://github.com/professorgeorge/pricingagent.git
-cd pricingagent</code></pre>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Run the Agent</h3>
-                        <pre><code>python pricing_agent.py</code></pre>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Answer Questions</h3>
-                        <p>The agent will guide you through a series of questions about your product/service, costs, market position, and competitive landscape.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Get Recommendations</h3>
-                        <p>Receive detailed pricing recommendations with target price ranges, profit margins, and strategic insights.</p>
+                <h2 class="section-title">Pricing Calculator</h2>
+                <p class="section-subtitle">Enter your product details to get instant pricing recommendations</p>
+                
+                <div class="calculator-container">
+                    <form id="pricingForm" class="pricing-form">
+                        <div class="form-section">
+                            <h3>Product Information</h3>
+                            <div class="form-group">
+                                <label for="productName">Product/Service Name</label>
+                                <input type="text" id="productName" name="productName" required placeholder="e.g., Premium Widget Pro">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="productType">Product Type</label>
+                                <select id="productType" name="productType" required>
+                                    <option value="">Select type...</option>
+                                    <option value="Product (physical good)">Product (physical good)</option>
+                                    <option value="Service">Service</option>
+                                    <option value="Software/Digital product">Software/Digital product</option>
+                                    <option value="Subscription/Membership">Subscription/Membership</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select industry...</option>
+                                    <option value="software">Software</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="saas">SaaS</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="luxury">Luxury</option>
+                                    <option value="food_beverage">Food & Beverage</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Market & Customer Details</h3>
+                            <div class="form-group">
+                                <label for="customerType">Customer Type</label>
+                                <select id="customerType" name="customerType" required>
+                                    <option value="">Select customer type...</option>
+                                    <option value="B2C (Individual consumers)">B2C (Individual consumers)</option>
+                                    <option value="B2B (Other businesses)">B2B (Other businesses)</option>
+                                    <option value="Both B2B and B2C">Both B2B and B2C</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="marketPosition">Market Position</label>
+                                <select id="marketPosition" name="marketPosition" required>
+                                    <option value="">Select market position...</option>
+                                    <option value="New market entry">New market entry</option>
+                                    <option value="Established competitor">Established competitor</option>
+                                    <option value="Market leader">Market leader</option>
+                                    <option value="Niche player">Niche player</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="uniqueness">Product Uniqueness</label>
+                                <select id="uniqueness" name="uniqueness" required>
+                                    <option value="">Select uniqueness level...</option>
+                                    <option value="Highly innovative/unique">Highly innovative/unique</option>
+                                    <option value="Somewhat differentiated">Somewhat differentiated</option>
+                                    <option value="Similar to competitors">Similar to competitors</option>
+                                    <option value="Commodity">Commodity</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Cost & Pricing Data</h3>
+                            <div class="form-group">
+                                <label for="unitCost">Unit Cost ($)</label>
+                                <input type="number" id="unitCost" name="unitCost" step="0.01" min="0" required placeholder="e.g., 25.00">
+                                <small>Your cost to produce/deliver one unit</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="competitorPrice">Competitor Price ($) <span class="optional">(Optional)</span></label>
+                                <input type="number" id="competitorPrice" name="competitorPrice" step="0.01" min="0" placeholder="e.g., 49.99">
+                                <small>Average price competitors charge</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="expectedVolume">Expected Monthly Volume <span class="optional">(Optional)</span></label>
+                                <input type="number" id="expectedVolume" name="expectedVolume" min="0" placeholder="e.g., 500">
+                                <small>Number of units you expect to sell per month</small>
+                            </div>
+                            
+                            <div class="form-group" id="ltvGroup" style="display: none;">
+                                <label for="customerLTV">Customer Lifetime Value ($) <span class="optional">(Optional)</span></label>
+                                <input type="number" id="customerLTV" name="customerLTV" step="0.01" min="0" placeholder="e.g., 2400">
+                                <small>Total revenue per customer over their lifetime</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">Calculate Pricing</button>
+                            <button type="reset" class="btn btn-secondary btn-large">Reset Form</button>
+                        </div>
+                    </form>
+                    
+                    <div id="results" class="results-container" style="display: none;">
+                        <div class="results-header">
+                            <h3>Pricing Recommendation</h3>
+                            <button id="newCalculation" class="btn btn-secondary">New Calculation</button>
+                        </div>
+                        <div id="resultsContent"></div>
                     </div>
                 </div>
             </div>
@@ -167,8 +259,8 @@ cd pricingagent</code></pre>
         <section class="cta">
             <div class="container">
                 <h2>Ready to Optimize Your Pricing?</h2>
-                <p>Start using Pricing Agent today and make data-driven pricing decisions</p>
-                <a href="https://github.com/professorgeorge/pricingagent" target="_blank" class="btn btn-primary">Get Started on GitHub</a>
+                <p>Use the calculator above or explore the Python CLI version on GitHub</p>
+                <a href="https://github.com/professorgeorge/pricingagent" target="_blank" class="btn btn-primary">View on GitHub</a>
             </div>
         </section>
     </main>
@@ -179,5 +271,8 @@ cd pricingagent</code></pre>
             <p>Built with best practices from Harvard Business Review pricing research and industry-standard margin benchmarks.</p>
         </div>
     </footer>
+    
+    <script src="pricing-engine.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
